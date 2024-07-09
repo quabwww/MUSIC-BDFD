@@ -15,4 +15,4 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Comando para iniciar tu aplicación
-CMD ["python", "main.py"]
+CMD ["python", "uvicorn main:app --host 0.0.0.0 --port 8000"]
