@@ -14,9 +14,12 @@ COPY . .
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia y ejecuta el script de modificación de pytube
-COPY modify_pytube_cipher.py .
-RUN python modify_pytube_cipher.py
+# Copia tu archivo personalizado y renómbralo como cipher.py
+COPY cipher_custom.py /app/pytube/cipher.py
+
+# Comando para iniciar tu aplicación
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
 
 # Comando para iniciar tu aplicación
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
